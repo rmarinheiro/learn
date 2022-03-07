@@ -25,4 +25,6 @@ INSERT INTO tb_resource(title,description,position,img_Uri,type,offer_id) VALUES
 INSERT INTO tb_section(title,description,position,img_Uri,resource_id,prerequisite_id) VALUES('CAPITULO 1','CAPITULO INICIAL',1,'https://www.oracle.com/a/ocom/img/rc24-duke-java-mascot.jpg',1,NULL);
 INSERT INTO tb_section(title,description,position,img_Uri,resource_id,prerequisite_id) VALUES('CAPITULO 2','CAPITULO VAMOS CONTINUAR',2,'https://www.oracle.com/a/ocom/img/rc24-duke-java-mascot.jpg',1,1);
 INSERT INTO tb_section(title,description,position,img_Uri,resource_id,prerequisite_id) VALUES('CAPITULO 3','CAPITULO VAMOS FINALIZAR',3,'https://www.oracle.com/a/ocom/img/rc24-duke-java-mascot.jpg',1,2);
- 
+
+INSERT INTO tb_enrollment(user_id,offer_id,enroll_Moment,refund_Moment,available,only_Update) VALUES(1,1,TIMESTAMP WITH TIME ZONE '2021-11-20T09:00:07Z',null,true,false);
+INSERT INTO tb_enrollment(user_id,offer_id,enroll_Moment,refund_Moment,available,only_Update) VALUES(2,1,TIMESTAMP WITH TIME ZONE '2021-11-20T13:00:07Z',null,true,false);
