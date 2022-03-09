@@ -2,10 +2,13 @@ package br.com.rafael.learn.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,6 +29,9 @@ public class Enrollment implements Serializable {
 	private boolean available;
 	
 	private boolean onlyUpdate;
+	
+	@ManyToMany(mappedBy = "enrollmentsDone")
+	private Set<Lesson> lessDone = new HashSet<>();
 	
 	public Enrollment() {
 		// TODO Auto-generated constructor stub
