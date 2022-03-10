@@ -1,10 +1,13 @@
 package br.com.rafael.learn.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +18,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -31,6 +35,7 @@ public abstract class Lesson implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(columnDefinition = "TEXT")
 	private String title;
 	
 	private Integer position;
@@ -47,6 +52,9 @@ public abstract class Lesson implements Serializable {
 					   @JoinColumn(name="offer_id"),
 			   })
 	private Set<Enrollment> enrollmentsDone = new HashSet<>();
+	
+	@OneToMany(mappedBy = "lesson")
+	private List<Delivery> list = new ArrayList<>();
 	
 	public Lesson() {
 		// TODO Auto-generated constructor stub

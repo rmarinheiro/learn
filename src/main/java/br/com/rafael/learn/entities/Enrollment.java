@@ -2,13 +2,16 @@ package br.com.rafael.learn.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -29,6 +32,9 @@ public class Enrollment implements Serializable {
 	private boolean available;
 	
 	private boolean onlyUpdate;
+	
+	@OneToMany(mappedBy = "enrollment")
+	private List<Delivery> deliveres = new ArrayList<>();
 	
 	@ManyToMany(mappedBy = "enrollmentsDone")
 	private Set<Lesson> lessDone = new HashSet<>();

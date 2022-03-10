@@ -43,3 +43,7 @@ INSERT INTO tb_task(id,description,question_Count,approval_Count,weight,due_Date
 
 INSERT INTO tb_lessons_done(lesson_id,user_id,offer_id) VALUES (1,1,1);
 INSERT INTO tb_lessons_done(lesson_id,user_id,offer_id) VALUES (2,1,1);
+
+INSERT INTO tb_notification(text,moment,read,route,user_id) VALUES('Tarefa a fazer',TIMESTAMP WITH TIME ZONE '2022-11-20T03:00:07Z',true,'Usuario 01',1);
+INSERT INTO tb_delivery(uri,moment,feedback,correct_count,delivery_status,lesson_id,offer_id,user_id)VALUES('https://github.com/devsuperior/bds-dslearn',TIMESTAMP WITH TIME ZONE '2020-12-10T10:00:00Z',0,null,1,4,1,1);
+

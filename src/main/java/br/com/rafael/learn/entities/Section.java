@@ -1,5 +1,6 @@
 package br.com.rafael.learn.entities;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -12,8 +13,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_section")
-public class Section {
+public class Section implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
