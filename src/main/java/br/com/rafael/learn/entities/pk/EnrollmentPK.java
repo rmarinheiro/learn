@@ -1,4 +1,4 @@
-package br.com.rafael.learn.entities;
+package br.com.rafael.learn.entities.pk;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -6,6 +6,9 @@ import java.util.Objects;
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import br.com.rafael.learn.entities.Offer;
+import br.com.rafael.learn.entities.User;
 
 @Embeddable
 public class EnrollmentPK implements Serializable {

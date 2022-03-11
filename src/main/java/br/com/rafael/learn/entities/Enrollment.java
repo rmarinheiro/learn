@@ -14,6 +14,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import br.com.rafael.learn.entities.pk.EnrollmentPK;
+
 @Entity
 @Table(name = "tb_enrollment")
 public class Enrollment implements Serializable {
