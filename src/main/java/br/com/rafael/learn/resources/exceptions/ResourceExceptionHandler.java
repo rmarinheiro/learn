@@ -11,6 +11,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import br.com.rafael.learn.services.exceptions.OauthCustomError;
 import br.com.rafael.learn.services.exceptions.StandardError;
 import br.com.rafael.learn.services.exceptions.ValidationError;
 
@@ -55,6 +56,20 @@ public class ResourceExceptionHandler {
 			err.addErrors(f.getField(), f.getDefaultMessage());
 		}
 		return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(err);
+		
+	}
+	
+	@ExceptionHandler(ForbiddenException.class)
+	public ResponseEntity<OauthCustomError> forbidden(ForbiddenException e, HttpServletRequest request){
+		OauthCustomError err = new OauthCustomError("Forbidden",e.getMessage());
+		return ResponseEntity.status(HttpStatus.FORBIDDEN).body(err);
+		
+	}
+	
+	@ExceptionHandler(UnauthorizedException.class)
+	public ResponseEntity<OauthCustomError> unauthorized(UnauthorizedException e, HttpServletRequest request){
+		OauthCustomError err = new OauthCustomError("Unathorized",e.getMessage());
+		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(err);
 		
 	}
 

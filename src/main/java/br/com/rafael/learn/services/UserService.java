@@ -24,14 +24,21 @@ public class UserService implements UserDetailsService {
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
+	private AuthService authService; 
+	
 	private static Logger logger = LoggerFactory.getLogger(UserService.class);
 	
 	@Transactional(readOnly = true)
 	public UserDTO findById(Long id) {
+		
+		authService.validateSelfOrAdmin(id);
 		Optional<User> obj =  userRepository.findById(id);
 		User entity = obj.orElseThrow(()-> new EntityResourceNotFoundException("Objeto não encontrado"));
 		return new UserDTO(entity);
 	}
+	
+	
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
