@@ -22,40 +22,32 @@ public class Delivery implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String uri;
-	
+
 	private Instant moment;
-	
+
 	private String feedback;
-	
+
 	private Integer correctCount;
-	
+
 	private DeliveryType deliveryStatus;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "lesson_id")
 	private Lesson lesson;
-	
+
 	@ManyToOne
-	@JoinColumns({
-		@JoinColumn(name = "offer_id"),
-		@JoinColumn(name = "user_id")
-	})
+	@JoinColumns({ @JoinColumn(name = "offer_id"), @JoinColumn(name = "user_id") })
 	private Enrollment enrollment;
-	
+
 	public Delivery() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-
-
-
 
 	public Delivery(Long id, String uri, Instant moment, String feedback, Integer correctCount,
 			DeliveryType deliveryStatus, Enrollment enrollment) {
@@ -68,11 +60,6 @@ public class Delivery implements Serializable {
 		this.deliveryStatus = deliveryStatus;
 		this.enrollment = enrollment;
 	}
-
-
-
-
-
 
 	public Long getId() {
 		return id;
@@ -113,7 +100,13 @@ public class Delivery implements Serializable {
 	public void setCorrectCount(Integer correctCount) {
 		this.correctCount = correctCount;
 	}
-	
-	
+
+	public DeliveryType getDeliveryStatus() {
+		return deliveryStatus;
+	}
+
+	public void setDeliveryStatus(DeliveryType deliveryStatus) {
+		this.deliveryStatus = deliveryStatus;
+	}
 
 }
